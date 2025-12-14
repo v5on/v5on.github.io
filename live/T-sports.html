@@ -1,0 +1,88 @@
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>T-sports — Live TV Streaming Player | v5on</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<!-- SEO META -->
+<meta name="description" content="Watch live TV streaming with fast, fullscreen-friendly Clappr player. Optimized for mobile, desktop, and smart TV.">
+<meta name="keywords" content="live tv, m3u8 player, clappr player, live streaming, v5on.github.io, v5on.site, hls live tv, online tv player">
+<meta name="author" content="developer @sultanarabi161">
+
+<!-- Ads -->
+<script
+  type="text/javascript"
+  src="https://pl28249033.effectivegatecpm.com/72/2e/10/722e10c2ab65f0c8b8052fd534e34fe7.js"
+></script>
+  
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  height: 100%;
+  overflow: hidden;
+}
+
+#player {
+  width: 100%;
+  height: 100vh;
+}
+
+/* Disable selection */
+* {
+  user-select: none;
+}
+</style>
+</head>
+
+<body oncontextmenu="return false">
+
+<div id="player"></div>
+
+<!-- Clappr Core -->
+<script src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+<!-- HLS Playback -->
+<script src="https://cdn.jsdelivr.net/npm/clappr-hlsjs-playback@latest/dist/clappr-hlsjs-playback.min.js"></script>
+
+<script>
+var player = new Clappr.Player({
+  source: "https://tvsen7.aynaott.com/tsportshd/index.m3u8",
+  parentId: "#player",
+
+  autoPlay: true,
+  mute: true, // mobile autoplay policy safe
+  width: "100%",
+  height: "100%",
+
+  playback: {
+    playInline: true
+  },
+
+  hlsjsConfig: {
+    lowLatencyMode: true,
+    enableWorker: true,
+    backBufferLength: 90
+  },
+
+  mediacontrol: {
+    seekbar: "#ff0000",
+    buttons: "#ffffff"
+  },
+
+  fullscreenEnabled: true,
+  hideMediaControl: false,
+  disableVideoTagContextMenu: true
+});
+
+/* Unmute after user interaction */
+document.addEventListener("click", function () {
+  player.setMute(false);
+}, { once: true });
+</script>
+
+</body>
+</html>
